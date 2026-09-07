@@ -309,17 +309,25 @@ p { margin: 0 0 1rem; }
 .c-hero__media {
   position: relative;
   min-height: 260px;
-  background:
-    linear-gradient(135deg, rgba(41,48,60,0.15), rgba(0,112,60,0.12)),
-    url("../assets/group.jpg")
-    center 28% / cover no-repeat;
+  background: var(--hero-deep);
+  overflow: hidden;
+}
+.c-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  display: block;
 }
 .c-hero__media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--hero) 0%, transparent 18%);
+  background: linear-gradient(90deg, var(--hero) 0%, transparent 22%);
   pointer-events: none;
+  z-index: 1;
 }
 .c-hero__photo-slot {
   position: absolute;
@@ -336,9 +344,9 @@ p { margin: 0 0 1rem; }
 
 @media (max-width: 860px) {
   .c-hero { grid-template-columns: 1fr; min-height: auto; }
-  .c-hero__media { min-height: 220px; order: -1; }
+  .c-hero__media { min-height: 240px; order: -1; }
   .c-hero__media::after {
-    background: linear-gradient(180deg, transparent 50%, var(--hero));
+    background: linear-gradient(180deg, transparent 45%, var(--hero));
   }
 }
 

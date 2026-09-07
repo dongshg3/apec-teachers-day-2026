@@ -20,7 +20,15 @@
         </p>
         <p class="c-hero__meta">Editorial · 10 September 2026 · <a href="https://maliang26.github.io/apec/" rel="noopener" target="_blank" style="color:#9fd0ea;">Official APEC Lab site</a></p>
       </div>
-      <div class="c-hero__media" id="home-hero-media" role="img" aria-label="APEC Lab group photo at Sun Yat-sen University School of Ecology">
+      <div class="c-hero__media" id="home-hero-media" aria-label="APEC Lab group photo at Sun Yat-sen University School of Ecology">
+        <img
+          class="c-hero__img"
+          src="assets/group.jpg"
+          alt="APEC Lab group photo, 2025, School of Ecology, Sun Yat-sen University"
+          width="1600"
+          height="900"
+          fetchpriority="high"
+        />
         <div class="c-hero__photo-slot" id="home-photo-slot">APEC Lab group photo · 2025 · School of Ecology, SYSU</div>
       </div>
     </section>
@@ -378,13 +386,7 @@
   <script src="js/main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var media = document.getElementById("home-hero-media");
       var slot = document.getElementById("home-photo-slot");
-      if (!media) return;
-      media.style.backgroundImage =
-        "linear-gradient(135deg, rgba(41,48,60,.18), rgba(0,112,60,.10)), url('assets/group.jpg')";
-      media.style.backgroundPosition = "center 28%";
-      media.style.backgroundSize = "cover";
       if (slot) {
         slot.innerHTML = 'APEC Lab · <a href="https://maliang26.github.io/apec/people/" rel="noopener" target="_blank" style="color:#fff;">Meet the team</a>';
       }
