@@ -704,12 +704,13 @@ p { margin: 0 0 1rem; }
   object-position: center 18%;
 }
 .c-card__media--cover {
-  background: var(--hero-deep);
+  background: #f3f4f6;
 }
 .c-card__media--cover img {
-  object-fit: contain;
-  padding: 0.55rem;
-  background: var(--hero-deep);
+  object-fit: cover;
+  object-position: center top;
+  padding: 0;
+  background: #f3f4f6;
 }
 .c-card:hover .c-card__media img { transform: scale(1.04); }
 .c-card:hover .c-card__media--cover img,
