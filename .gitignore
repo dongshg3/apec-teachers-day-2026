@@ -1,3 +1,4 @@
+.gitignore
 # Dependencies / tooling
 node_modules/
 .DS_Store
@@ -6,8 +7,10 @@ Thumbs.db
 .env
 .env.*
 
-# Local QA artifacts
+# Local helpers / QA
 assets/qa/
 assets/qa_smoke.py
 assets/fix_encoding.py
 assets/fix_title.py
+assets/fetch_figures.py
+assets/pages-config.json
