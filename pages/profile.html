@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile | Liang Ma 马亮</title>
+  <link rel="stylesheet" href="../css/nature-apec.css" />
+</head>
+<body>
+  <div data-site-header></div>
+  <main>
+    <div class="u-container">
+      <div class="c-profile-hero">
+        <div class="c-portrait" id="mentor-portrait">
+          Mentor photograph forthcoming<br />
+          Place file at <code>assets/mentor.jpg</code>
+        </div>
+        <div>
+          <p class="kicker">Profile · Where I work</p>
+          <h1>Liang Ma · 马亮</h1>
+          <p class="c-article__authors">Youth Researcher (Associate Professor) · Doctoral Supervisor · Assistant Dean</p>
+          <p class="meta">School of Ecology, Sun Yat-sen University · Shenzhen Campus · maliang26@mail.sysu.edu.cn</p>
+          <p>
+            APEC Lab PI focusing on animal physiological ecology and biodiversity conservation: how terrestrial vertebrates experience climate and land-use change across life stages, and how mechanistic models can turn those measurements into protection priorities.
+          </p>
+          <div class="c-cv-grid">
+            <div class="c-cv-stat reveal"><strong>36+</strong><span>SCI papers (Nat Commun, Current Biology, GCB…)</span></div>
+            <div class="c-cv-stat reveal"><strong>4</strong><span>National-level projects as PI</span></div>
+            <div class="c-cv-stat reveal"><strong>APEC</strong><span>Animal Physiological Ecology and Conservation</span></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="c-section">
+        <div class="c-split">
+          <div>
+            <h2>Research questions</h2>
+            <ul class="c-list">
+              <li>
+                <h3 class="c-list__title">Physiological responses across life stages</h3>
+                <p class="meta">Adult activity windows versus embryonic developmental opportunity under warming and heat events.</p>
+              </li>
+              <li>
+                <h3 class="c-list__title">Microclimate &amp; mechanistic niches</h3>
+                <p class="meta">Building and validating animal–environment exchange models that respect shade, nests and elevation.</p>
+              </li>
+              <li>
+                <h3 class="c-list__title">Conservation under global change</h3>
+                <p class="meta">Protected-area effectiveness, desert bird communities, forest degradation and stopover threats.</p>
+              </li>
+            </ul>
+
+            <h2 style="margin-top: 2rem;">Selected recognitions</h2>
+            <p>National high-level youth talent programme · Yixian Scholar (逸仙学者) · Young editorial board, <em>Fundamental Research</em> · “优秀青年动物生态学工作者” · Reviewer for <em>Nature Communications</em>, <em>Conservation Biology</em>, <em>MEE</em>, and others.</p>
+            <p>Course: 生理生态学 (Physiological Ecology).</p>
+            <p class="meta">Office: Medical Garden Building 2, Room 1203A, Shenzhen Campus.</p>
+          </div>
+
+          <aside>
+            <h2>Timeline</h2>
+            <ol class="c-timeline">
+              <li>
+                <div class="c-timeline__year">2008–2012</div>
+                <strong>BSc</strong> — Beijing Forestry University, Wildlife &amp; Nature Reserve Management
+              </li>
+              <li>
+                <div class="c-timeline__year">2012–2017</div>
+                <strong>PhD</strong> — Institute of Zoology, Chinese Academy of Sciences (Ecology); visiting UW Seattle 2015–2016
+              </li>
+              <li>
+                <div class="c-timeline__year">2017–2019</div>
+                <strong>Postdoc</strong> — Institute of Zoology, CAS
+              </li>
+              <li>
+                <div class="c-timeline__year">2019–2022</div>
+                <strong>Associate Research Scholar</strong> — Princeton University
+              </li>
+              <li>
+                <div class="c-timeline__year">2022–present</div>
+                <strong>Youth Researcher / Associate Professor</strong> — School of Ecology, SYSU; APEC Lab founded
+              </li>
+            </ol>
+            <p class="meta" style="margin-top: 1rem;"><a href="https://eco.sysu.edu.cn/teacher/MaLiang" rel="noopener" target="_blank">Official faculty page →</a></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="c-section">
+        <h2>Talks that mark the programme</h2>
+        <ul class="c-list">
+          <li>
+            <div class="c-card__type">2024 · Boao</div>
+            <h3 class="c-list__title">Climate change impact on terrestrial animals in overlooked spaces and stages</h3>
+            <p class="meta">2nd World Life Science Conference · invited</p>
+          </li>
+          <li>
+            <div class="c-card__type">2024 · Wuhu</div>
+            <h3 class="c-list__title">气候变化在隐秘的空间和阶段对陆生动物的影响</h3>
+            <p class="meta">Chinese Herpetological Congress · plenary</p>
+          </li>
+          <li>
+            <div class="c-card__type">2023 · Nanjing</div>
+            <h3 class="c-list__title">气候变化对全球荒漠鸟类的影响</h3>
+            <p class="meta">China Ornithological Congress · youth forum</p>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <div data-site-footer></div>
+  <script>
+    // Auto-swap portrait if assets/mentor.jpg exists
+    document.addEventListener("DOMContentLoaded", function () {
+      var img = new Image();
+      img.onload = function () {
+        var box = document.getElementById("mentor-portrait");
+        if (!box) return;
+        box.innerHTML = "";
+        img.alt = "Liang Ma / 马亮";
+        box.appendChild(img);
+      };
+      img.src = "../assets/mentor.jpg";
+    });
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

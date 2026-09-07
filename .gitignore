@@ -1,0 +1,13 @@
+# Dependencies / tooling
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+
+# Local QA artifacts
+assets/qa/
+assets/qa_smoke.py
+assets/fix_encoding.py
+assets/fix_title.py
