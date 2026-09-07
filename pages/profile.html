@@ -109,17 +109,14 @@
   </main>
   <div data-site-footer></div>
   <script>
-    // Auto-swap portrait if assets/mentor.jpg exists
     document.addEventListener("DOMContentLoaded", function () {
-      var img = new Image();
-      img.onload = function () {
-        var box = document.getElementById("mentor-portrait");
-        if (!box) return;
-        box.innerHTML = "";
-        img.alt = "Liang Ma / 马亮";
-        box.appendChild(img);
-      };
+      var box = document.getElementById("mentor-portrait");
+      if (!box) return;
+      var img = document.createElement("img");
       img.src = "../assets/mentor.jpg";
+      img.alt = "Liang Ma / 马亮";
+      box.innerHTML = "";
+      box.appendChild(img);
     });
   </script>
   <script src="../js/main.js"></script>

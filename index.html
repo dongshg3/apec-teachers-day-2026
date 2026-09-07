@@ -54,11 +54,13 @@
             </article>
 
             <article class="c-card reveal">
-              <div class="c-card__media c-card__media--placeholder">Portrait forthcoming</div>
+              <div class="c-card__media">
+                <img src="assets/mentor.jpg" alt="马亮 Liang Ma" width="800" height="500" loading="lazy" />
+              </div>
               <div class="c-card__type">Profile</div>
               <h3 class="c-card__title"><a href="pages/profile.html">Liang Ma: physiological ecology from nest to range edge</a></h3>
               <p class="c-card__excerpt">Youth researcher, doctoral supervisor, Assistant Dean — IOZ, Princeton, SYSU.</p>
-              <p class="meta">Career · Where I work</p>
+              <p class="meta">Career · Where I work · Photo from SYSU faculty page</p>
             </article>
 
             <article class="c-card reveal">
@@ -252,16 +254,15 @@
   <script src="js/main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var img = new Image();
-      img.onload = function () {
-        var media = document.getElementById("home-hero-media");
-        var slot = document.getElementById("home-photo-slot");
-        if (!media) return;
-        media.style.backgroundImage =
-          "linear-gradient(135deg, rgba(41,48,60,.25), rgba(0,112,60,.22)), url('assets/mentor.jpg')";
-        if (slot) slot.textContent = "Liang Ma · APEC Lab";
-      };
-      img.src = "assets/mentor.jpg";
+      var media = document.getElementById("home-hero-media");
+      var slot = document.getElementById("home-photo-slot");
+      if (!media) return;
+      media.style.backgroundImage =
+        "linear-gradient(135deg, rgba(41,48,60,.22), rgba(0,112,60,.18)), url('assets/mentor.jpg')";
+      media.style.backgroundPosition = "center top";
+      if (slot) {
+        slot.innerHTML = 'Liang Ma · 马亮 · <a href="https://eco.sysu.edu.cn/teacher/MaLiang" rel="noopener" target="_blank" style="color:#fff;">Faculty page</a>';
+      }
     });
   </script>
 </body>
