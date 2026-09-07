@@ -1,79 +1,15 @@
-/* Blessings data — 填入姓名与祝福语后刷新 correspondence 页即可 */
+/* Blessings data — 填入祝福语后将 status 改为 "ready" 并刷新 correspondence 页 */
 window.APEC_BLESSINGS = [
-  {
-    id: 1,
-    name: "",
-    role: "课题组同学",
-    message: "",
-    status: "pending",
-    note: "Correspondence slot reserved — awaiting Teachers' Day submission."
-  },
-  {
-    id: 2,
-    name: "",
-    role: "课题组同学",
-    message: "",
-    status: "pending",
-    note: "Correspondence slot reserved — awaiting Teachers' Day submission."
-  },
-  {
-    id: 3,
-    name: "",
-    role: "课题组同学",
-    message: "",
-    status: "pending",
-    note: "Correspondence slot reserved — awaiting Teachers' Day submission."
-  },
-  {
-    id: 4,
-    name: "",
-    role: "课题组同学",
-    message: "",
-    status: "pending",
-    note: "Correspondence slot reserved — awaiting Teachers' Day submission."
-  },
-  {
-    id: 5,
-    name: "",
-    role: "课题组同学",
-    message: "",
-    status: "pending",
-    note: "Correspondence slot reserved — awaiting Teachers' Day submission."
-  },
-  {
-    id: 6,
-    name: "",
-    role: "课题组同学",
-    message: "",
-    status: "pending",
-    note: "Correspondence slot reserved — awaiting Teachers' Day submission."
-  },
-  {
-    id: 7,
-    name: "",
-    role: "课题组同学",
-    message: "",
-    status: "pending",
-    note: "Correspondence slot reserved — awaiting Teachers' Day submission."
-  },
-  {
-    id: 8,
-    name: "",
-    role: "博士后 / 访问学者",
-    message: "",
-    status: "pending",
-    note: "Correspondence slot reserved — awaiting Teachers' Day submission."
-  }
+  { id: 1, name: "Zhong-Wen Jiang", role: "博士后", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 2, name: "Yuchen Liao", role: "博士后", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 3, name: "Zhen Pu", role: "博士后", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 4, name: "Junqi Fan", role: "博士生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 5, name: "Zihan Zhou", role: "博士生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 6, name: "Shenggang Dong", role: "硕士生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 7, name: "Kexin Wang", role: "硕士生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 8, name: "Tengtian Chen", role: "本科生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 9, name: "Siqi He", role: "本科生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 10, name: "Beibei Liu", role: "本科生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 11, name: "Weitian Zhang", role: "本科生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 12, name: "Ying Zhang", role: "本科生", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." }
 ];
-
-/**
- * 填写示例（复制后改 status 为 "ready"）：
- * {
- *   id: 1,
- *   name: "张三",
- *   role: "博士生",
- *   message: "感谢马老师在生理生态学路上的耐心指引。",
- *   status: "ready",
- *   note: ""
- * }
- */

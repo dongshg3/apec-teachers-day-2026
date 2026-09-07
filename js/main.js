@@ -50,8 +50,9 @@
         <div class="u-container c-topbar__inner">
           <ul class="c-topbar__links">
             <li><a href="${root}pages/contents.html">View all sections</a></li>
-            <li><a href="${root}pages/research.html">Saved research</a></li>
-            <li><a href="${root}pages/lab.html">About APEC</a></li>
+            <li><a href="https://maliang26.github.io/apec/" rel="noopener" target="_blank">Official APEC Lab</a></li>
+            <li><a href="https://maliang26.github.io/apec/people/" rel="noopener" target="_blank">People</a></li>
+            <li><a href="${root}pages/correspondence.html">Submit a blessing</a></li>
           </ul>
           <div class="c-topbar__tools">
             <span class="c-search-faux" aria-hidden="true">
@@ -103,7 +104,7 @@
           <div class="c-footer__grid">
             <div>
               <div class="c-footer__nature">nature/apec</div>
-              <p>Teachers' Day microsite by APEC Lab (Animal Physiological Ecology and Conservation), School of Ecology, Sun Yat-sen University. Visual language inspired by <em>Nature</em>; linked articles remain © their publishers.</p>
+              <p>Teachers' Day microsite by APEC Lab (Animal Physiological Ecology and Conservation), School of Ecology, Sun Yat-sen University. Official lab site: <a href="https://maliang26.github.io/apec/" rel="noopener" target="_blank">maliang26.github.io/apec</a>. Visual language inspired by <em>Nature</em>; linked articles remain © their publishers.</p>
             </div>
             <div>
               <h3>Explore</h3>
