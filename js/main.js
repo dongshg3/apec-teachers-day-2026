@@ -51,8 +51,7 @@
           <ul class="c-topbar__links">
             <li><a href="${root}pages/contents.html">View all sections</a></li>
             <li><a href="https://maliang26.github.io/apec/" rel="noopener" target="_blank">Official APEC Lab</a></li>
-            <li><a href="https://maliang26.github.io/apec/people/" rel="noopener" target="_blank">People</a></li>
-            <li><a href="${root}pages/correspondence.html">Submit a blessing</a></li>
+            <li><a href="${root}pages/correspondence.html">Correspondence</a></li>
           </ul>
           <div class="c-topbar__tools">
             <span class="c-search-faux" aria-hidden="true">
