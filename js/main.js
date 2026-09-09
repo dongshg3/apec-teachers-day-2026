@@ -138,9 +138,17 @@
     `;
   }
 
+  function roleRank(role) {
+    const order = { 博士后: 1, 博士生: 2, 硕士生: 3, 本科生: 4 };
+    return order[role] || 9;
+  }
+
   function readyBlessings() {
     if (!window.APEC_BLESSINGS) return [];
-    return window.APEC_BLESSINGS.filter((b) => b.status === "ready" && b.message && b.name);
+    return window.APEC_BLESSINGS
+      .filter((b) => b.status === "ready" && b.message && b.name)
+      .slice()
+      .sort((a, b) => roleRank(a.role) - roleRank(b.role) || String(a.name).localeCompare(String(b.name), "zh"));
   }
 
   function pendingCount() {
@@ -163,13 +171,20 @@
           : `${ready.length} letters published`;
     }
 
+    const signatories = document.querySelector("[data-signatories]");
+    if (signatories) {
+      signatories.innerHTML = ready
+        .map((b) => `<li>${escapeHtml(b.name)}${b.role ? " · " + escapeHtml(b.role) : ""}</li>`)
+        .join("");
+    }
+
     const readyHtml = ready
       .map((b, i) => {
         return `
-          <article class="c-correspondence reveal">
-            <div class="c-correspondence__label">Letter ${String(i + 1).padStart(2, "0")}</div>
+          <article class="c-correspondence reveal" style="transition-delay:${Math.min(i * 0.04, 0.4)}s">
+            <div class="c-correspondence__label">Letter ${String(i + 1).padStart(2, "0")} · ${escapeHtml(b.role || "APEC")}</div>
             <p class="c-correspondence__quote">${escapeHtml(b.message)}</p>
-            <div class="c-correspondence__by">— ${escapeHtml(b.name)}${b.role ? " · " + escapeHtml(b.role) : ""}</div>
+            <div class="c-correspondence__by">— ${escapeHtml(b.name)}</div>
           </article>
         `;
       })
@@ -201,10 +216,17 @@
           : `Correspondence · ${ready.length} published`;
     });
 
+    const pull = ready.find((b) => b.name === "蒲真") || ready.find((b) => b.message.length < 80) || ready[0];
+    const qEl = document.querySelector("[data-pull-quote]");
+    const bEl = document.querySelector("[data-pull-by]");
+    if (pull && qEl && bEl) {
+      qEl.textContent = pull.message;
+      bEl.textContent = `— ${pull.name}${pull.role ? " · " + pull.role : ""}`;
+    }
+
     if (!mount) return;
 
-    // Prefer short, distinctive letters for the homepage board
-    const preferred = ["姜中文", "蒲真", "何思齐", "洪文瑾", "陈腾天"];
+    const preferred = ["姜中文", "蒲真", "王可欣", "何思齐", "刘蓓蓓"];
     const featured = [];
     preferred.forEach((name) => {
       const hit = ready.find((b) => b.name === name);
@@ -215,15 +237,15 @@
     });
 
     mount.innerHTML = featured
-      .map((b, i) => {
-        return `
+      .map(
+        (b, i) => `
           <article class="c-letter-card reveal">
             <p class="c-letter-card__mark">Letter ${String(i + 1).padStart(2, "0")}</p>
             <p class="c-letter-card__quote">${escapeHtml(b.message)}</p>
             <p class="c-letter-card__by">— ${escapeHtml(b.name)}${b.role ? " · " + escapeHtml(b.role) : ""}</p>
           </article>
-        `;
-      })
+        `
+      )
       .join("");
   }
 
@@ -256,11 +278,22 @@
     nodes.forEach((n) => io.observe(n));
   }
 
+  function observeHeaderScroll() {
+    const header = document.querySelector(".c-header");
+    if (!header) return;
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 12);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     buildHeader();
     buildFooter();
     renderBlessings();
     renderHomeLetters();
     observeReveal();
+    observeHeaderScroll();
   });
 })();
