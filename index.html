@@ -126,7 +126,7 @@
               <li>
                 <div>
                   <a href="pages/correspondence.html">Letters to 马老师</a>
-                  <p class="meta" style="margin:0.25rem 0 0;">Correspondence · 7 published, more open</p>
+                  <p class="meta" style="margin:0.25rem 0 0;" data-letters-count-label>Correspondence · letters arriving</p>
                 </div>
               </li>
               <li>
@@ -138,6 +138,18 @@
             </ol>
           </div>
         </div>
+      </section>
+
+      <section class="c-section c-letters-board" aria-labelledby="letters-heading">
+        <div class="c-section__head">
+          <h2 id="letters-heading">Correspondence · letters to 马老师</h2>
+          <a href="pages/correspondence.html">Read all →</a>
+        </div>
+        <p class="c-letters-board__lead meta">
+          Signed Teachers' Day letters from the APEC Lab — short, public, and still arriving.
+          <span data-letters-count></span>
+        </p>
+        <div class="c-letters-board__grid" data-home-letters></div>
       </section>
 
       <section class="c-section">
@@ -230,53 +242,35 @@
       </section>
 
       <section class="c-section">
-        <div class="c-split">
-          <div>
-            <div class="c-section__head">
-              <h2>News &amp; comment</h2>
-              <a href="pages/news.html">View all →</a>
-            </div>
-            <ul class="c-list">
-              <li class="reveal">
-                <div class="c-card__type">News Feature <span class="c-badge c-badge--news">News</span></div>
-                <h3 class="c-list__title"><a href="pages/news.html">Why embryos must enter the climate conversation</a></h3>
-                <p class="c-authors">Conservation Biology · Ma <em>et al.</em></p>
-                <p class="meta">Adult-focused protection misses most embryo risk zones</p>
-              </li>
-              <li class="reveal">
-                <div class="c-card__type">Lab briefing</div>
-                <h3 class="c-list__title"><a href="pages/lab.html">Inside APEC: experiments, mechanistic niches and spatial conservation</a></h3>
-                <p class="meta">Mission and research framework</p>
-              </li>
-              <li class="reveal">
-                <div class="c-card__type">Nature</div>
-                <h3 class="c-list__title"><a href="https://www.nature.com/articles/s41586-023-06625-0" rel="noopener" target="_blank">Assessing the illegal hunting of native wildlife in China</a></h3>
-                <p class="c-authors">Liang <em>et al.</em> · Ma as co-author</p>
-                <p class="meta">Nature 623, 100–105 (2023)</p>
-              </li>
-              <li class="reveal">
-                <div class="c-card__type">Current Biology</div>
-                <h3 class="c-list__title"><a href="https://doi.org/10.1016/j.cub.2019.06.038" rel="noopener" target="_blank">Turtle embryos can influence their own sexual destinies</a></h3>
-                <p class="c-authors">Ye, Ma, Sun, Shine, Du</p>
-                <p class="meta">2019</p>
-              </li>
-            </ul>
-          </div>
-
-          <aside>
-            <div class="c-section__head">
-              <h2>Correspondence</h2>
-              <a href="pages/correspondence.html">All letters →</a>
-            </div>
-            <p class="meta" style="margin-bottom: 1rem;">Signed letters for 马老师 — more still arriving.</p>
-            <article class="c-correspondence reveal" data-home-blessing>
-              <div class="c-correspondence__label">Correspondence 01</div>
-              <p class="c-correspondence__quote">马老师，教师节快乐！早日发 Nature!</p>
-              <div class="c-correspondence__by">— 姜中文 · 博士后</div>
-            </article>
-            <p class="meta" style="margin-top:0.75rem;"><a href="pages/correspondence.html">Read 7 published letters →</a></p>
-          </aside>
+        <div class="c-section__head">
+          <h2>News &amp; comment</h2>
+          <a href="pages/news.html">View all →</a>
         </div>
+        <ul class="c-list c-list--tight">
+          <li class="reveal">
+            <div class="c-card__type">News Feature <span class="c-badge c-badge--news">News</span></div>
+            <h3 class="c-list__title"><a href="pages/news.html">Why embryos must enter the climate conversation</a></h3>
+            <p class="c-authors">Conservation Biology · Ma <em>et al.</em></p>
+            <p class="meta">Adult-focused protection misses most embryo risk zones</p>
+          </li>
+          <li class="reveal">
+            <div class="c-card__type">Lab briefing</div>
+            <h3 class="c-list__title"><a href="pages/lab.html">Inside APEC: experiments, mechanistic niches and spatial conservation</a></h3>
+            <p class="meta">Mission and research framework</p>
+          </li>
+          <li class="reveal">
+            <div class="c-card__type">Nature</div>
+            <h3 class="c-list__title"><a href="https://www.nature.com/articles/s41586-023-06625-0" rel="noopener" target="_blank">Assessing the illegal hunting of native wildlife in China</a></h3>
+            <p class="c-authors">Liang <em>et al.</em> · Ma as co-author</p>
+            <p class="meta">Nature 623, 100–105 (2023)</p>
+          </li>
+          <li class="reveal">
+            <div class="c-card__type">Current Biology</div>
+            <h3 class="c-list__title"><a href="https://doi.org/10.1016/j.cub.2019.06.038" rel="noopener" target="_blank">Turtle embryos can influence their own sexual destinies</a></h3>
+            <p class="c-authors">Ye, Ma, Sun, Shine, Du</p>
+            <p class="meta">2019</p>
+          </li>
+        </ul>
       </section>
 
       <section class="c-section">

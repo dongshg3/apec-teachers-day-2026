@@ -138,35 +138,89 @@
     `;
   }
 
+  function readyBlessings() {
+    if (!window.APEC_BLESSINGS) return [];
+    return window.APEC_BLESSINGS.filter((b) => b.status === "ready" && b.message && b.name);
+  }
+
+  function pendingCount() {
+    if (!window.APEC_BLESSINGS) return 0;
+    return window.APEC_BLESSINGS.filter((b) => b.status !== "ready" || !b.message).length;
+  }
+
   function renderBlessings() {
     const mount = document.querySelector("[data-blessings]");
     if (!mount || !window.APEC_BLESSINGS) return;
 
-    const items = window.APEC_BLESSINGS;
-    const ready = items.filter((b) => b.status === "ready" && b.message).length;
+    const ready = readyBlessings();
+    const open = pendingCount();
 
     const summary = document.querySelector("[data-blessings-summary]");
     if (summary) {
-      summary.textContent = `${ready} of ${items.length} correspondence pieces received · open slots remain for Teachers' Day.`;
+      summary.textContent =
+        open > 0
+          ? `${ready.length} letters published · ${open} slots still open`
+          : `${ready.length} letters published`;
     }
 
-    mount.innerHTML = items
-      .map((b) => {
-        const pending = b.status !== "ready" || !b.message;
-        const quote = pending
-          ? b.note || "Blessing text forthcoming."
-          : b.message;
-        const by = pending
-          ? `Slot ${b.id} · ${b.role || "Group member"}`
-          : `${b.name}${b.role ? " · " + b.role : ""}`;
-        const status = pending
-          ? `<span class="c-status c-status--open">Open</span>`
-          : "";
+    const readyHtml = ready
+      .map((b, i) => {
         return `
-          <article class="c-correspondence ${pending ? "c-correspondence--pending" : ""} reveal">
-            <div class="c-correspondence__label">Correspondence ${String(b.id).padStart(2, "0")}${status}</div>
-            <p class="c-correspondence__quote">${escapeHtml(quote)}</p>
-            <div class="c-correspondence__by">— ${escapeHtml(by)}</div>
+          <article class="c-correspondence reveal">
+            <div class="c-correspondence__label">Letter ${String(i + 1).padStart(2, "0")}</div>
+            <p class="c-correspondence__quote">${escapeHtml(b.message)}</p>
+            <div class="c-correspondence__by">— ${escapeHtml(b.name)}${b.role ? " · " + escapeHtml(b.role) : ""}</div>
+          </article>
+        `;
+      })
+      .join("");
+
+    const openHtml =
+      open > 0
+        ? `<p class="c-letters-open meta">Further correspondence welcome — ${open} open slot${open === 1 ? "" : "s"} remain for late letters.</p>`
+        : "";
+
+    mount.innerHTML = readyHtml + openHtml;
+  }
+
+  function renderHomeLetters() {
+    const mount = document.querySelector("[data-home-letters]");
+    const ready = readyBlessings();
+    const open = pendingCount();
+
+    document.querySelectorAll("[data-letters-count]").forEach((el) => {
+      el.textContent =
+        open > 0
+          ? ` · ${ready.length} published, more open`
+          : ` · ${ready.length} published`;
+    });
+    document.querySelectorAll("[data-letters-count-label]").forEach((el) => {
+      el.textContent =
+        open > 0
+          ? `Correspondence · ${ready.length} published, more open`
+          : `Correspondence · ${ready.length} published`;
+    });
+
+    if (!mount) return;
+
+    // Prefer short, distinctive letters for the homepage board
+    const preferred = ["姜中文", "蒲真", "何思齐", "洪文瑾", "陈腾天"];
+    const featured = [];
+    preferred.forEach((name) => {
+      const hit = ready.find((b) => b.name === name);
+      if (hit && featured.length < 3) featured.push(hit);
+    });
+    ready.forEach((b) => {
+      if (featured.length < 3 && !featured.includes(b)) featured.push(b);
+    });
+
+    mount.innerHTML = featured
+      .map((b, i) => {
+        return `
+          <article class="c-letter-card reveal">
+            <p class="c-letter-card__mark">Letter ${String(i + 1).padStart(2, "0")}</p>
+            <p class="c-letter-card__quote">${escapeHtml(b.message)}</p>
+            <p class="c-letter-card__by">— ${escapeHtml(b.name)}${b.role ? " · " + escapeHtml(b.role) : ""}</p>
           </article>
         `;
       })
@@ -206,6 +260,7 @@
     buildHeader();
     buildFooter();
     renderBlessings();
+    renderHomeLetters();
     observeReveal();
   });
 })();

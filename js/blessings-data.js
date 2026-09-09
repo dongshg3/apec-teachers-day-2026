@@ -49,8 +49,20 @@ window.APEC_BLESSINGS = [
     message: "谢谢老师作为导师的指导和建议，和作为班主任一直以来对我们大家的关心——祝老师教师节快乐、身体健康！",
     status: "ready"
   },
-  { id: 8, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
-  { id: 9, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  {
+    id: 8,
+    name: "何思齐",
+    role: "本科生",
+    message: "马老师教师节快乐！祝我导工作顺利、身体健康、万事如意、成果多多！我接下来也会继续努力，希望在老师指导下继续不断进步！",
+    status: "ready"
+  },
+  {
+    id: 9,
+    name: "王可欣",
+    role: "硕士生",
+    message: "祝全世界最好的马老师桃李芬芳，文章多多！",
+    status: "ready"
+  },
   { id: 10, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
   { id: 11, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
   { id: 12, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." }
