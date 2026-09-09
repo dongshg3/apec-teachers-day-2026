@@ -4,13 +4,17 @@
 
 ## 本地预览
 
-请打开项目根目录的 **`index.html`**（首页）。或在项目目录运行：
+请打开项目根目录的 **`index.html`**（网站首页）。线上入口：
+
+https://dongshg3.github.io/apec-teachers-day-2026/
+
+或在项目目录运行：
 
 ```bash
 npx --yes serve .
 ```
 
-然后访问提示的本地地址（默认即为首页）。
+默认即打开首页。
 
 ## 填写祝福语
 

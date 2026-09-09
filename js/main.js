@@ -224,6 +224,9 @@
           ? `Correspondence · ${n} published, more open`
           : `Correspondence · ${n} letters · complete`;
     });
+    document.querySelectorAll("[data-issue-letters]").forEach((el) => {
+      el.textContent = open > 0 ? `${n} letters · open` : `${n} letters · closed`;
+    });
 
     const pull = ready.find((b) => b.name === "蒲真") || ready.find((b) => b.message.length < 80) || ready[0];
     const qEl = document.querySelector("[data-pull-quote]");
