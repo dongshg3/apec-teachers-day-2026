@@ -1,4 +1,4 @@
-/* Blessings — Teachers' Day 2026 · complete set */
+/* Blessings — Teachers' Day 2026 */
 window.APEC_BLESSINGS = [
   {
     id: 1,

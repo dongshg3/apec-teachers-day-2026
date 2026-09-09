@@ -69,7 +69,7 @@
             </a>
             <button class="c-nav-toggle" type="button" aria-expanded="false" data-nav-toggle>Menu</button>
             <div class="c-issue-badge">
-              <strong>Volume 1 | Complete</strong>
+              <strong>Volume 1 | Teachers' Day 2026</strong>
               Tribute to Liang Ma · 马亮
             </div>
           </div>
@@ -128,7 +128,7 @@
             </div>
           </div>
           <div class="c-footer__legal">
-            © 2026 APEC Lab · SYSU · Volume 1 complete. Homage design only — not affiliated with Springer Nature.
+            © 2026 APEC Lab · SYSU. Homage design only — not affiliated with Springer Nature.
           </div>
         </div>
       </footer>
@@ -166,7 +166,7 @@
     const el = document.querySelector("[data-colophon]");
     if (el) {
       el.textContent =
-        `${ready.length} signed letters from the APEC Lab. Correspondence for this Teachers' Day special is now closed. Science stays unfinished; gratitude need not.`;
+        `With ${ready.length} signed letters from the APEC Lab. Science stays unfinished; gratitude need not.`;
     }
     const names = document.querySelector("[data-colophon-names]");
     if (names) {
@@ -185,8 +185,8 @@
     if (summary) {
       summary.textContent =
         open > 0
-          ? `${ready.length} letters published · ${open} slots still open`
-          : `${ready.length} letters published · correspondence closed`;
+          ? `${ready.length} letters · ${open} forthcoming`
+          : `${ready.length} letters · 10 September 2026`;
     }
 
     const asideCount = document.querySelector("[data-aside-letters-count]");
@@ -216,16 +216,17 @@
     const n = ready.length;
 
     document.querySelectorAll("[data-letters-count]").forEach((el) => {
-      el.textContent = open > 0 ? `${n} published · more open` : `${n} published · complete`;
+      el.textContent = "";
+      el.hidden = true;
     });
     document.querySelectorAll("[data-letters-count-label]").forEach((el) => {
-      el.textContent =
-        open > 0
-          ? `Correspondence · ${n} published, more open`
-          : `Correspondence · ${n} letters · complete`;
+      el.textContent = open > 0 ? `Correspondence · ${n} letters` : "Correspondence";
     });
     document.querySelectorAll("[data-issue-letters]").forEach((el) => {
-      el.textContent = open > 0 ? `${n} letters · open` : `${n} letters · closed`;
+      el.textContent = "Tribute to 马亮";
+    });
+    document.querySelectorAll("[data-closing-meta]").forEach((el) => {
+      el.textContent = `${n} letters to 马老师 · APEC Lab`;
     });
 
     const pull = ready.find((b) => b.name === "蒲真") || ready.find((b) => b.message.length < 80) || ready[0];
