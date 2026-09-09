@@ -144,12 +144,19 @@
     return order[role] || 9;
   }
 
+  /** Display order: four postdocs first, then 周子涵, then everyone else by stage. */
+  function letterRank(b) {
+    if (b.role === "博士后") return 0;
+    if (b.name === "周子涵") return 1;
+    return 10 + roleRank(b.role);
+  }
+
   function readyBlessings() {
     if (!window.APEC_BLESSINGS) return [];
     return window.APEC_BLESSINGS
       .filter((b) => b.status === "ready" && b.message && b.name)
       .slice()
-      .sort((a, b) => roleRank(a.role) - roleRank(b.role) || String(a.name).localeCompare(String(b.name), "zh"));
+      .sort((a, b) => letterRank(a) - letterRank(b) || (a.id || 0) - (b.id || 0));
   }
 
   function pendingCount() {
