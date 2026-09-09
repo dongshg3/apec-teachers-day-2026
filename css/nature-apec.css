@@ -888,10 +888,6 @@ p { margin: 0 0 1rem; }
   object-fit: contain;
   padding: 0.4rem;
 }
-.c-card__media--portrait img {
-  object-fit: cover;
-  object-position: center 18%;
-}
 .c-card__media--cover {
   background: #f3f4f6;
 }
