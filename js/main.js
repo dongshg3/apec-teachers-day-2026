@@ -189,6 +189,11 @@
           : `${ready.length} letters published · correspondence closed`;
     }
 
+    const asideCount = document.querySelector("[data-aside-letters-count]");
+    if (asideCount) {
+      asideCount.textContent = `${ready.length} signed letters`;
+    }
+
     renderColophon(ready);
 
     mount.innerHTML = ready
