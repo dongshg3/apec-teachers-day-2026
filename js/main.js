@@ -108,6 +108,7 @@
             <div>
               <h3>Explore</h3>
               <ul>
+                <li><a href="${root}pages/contents.html">Contents</a></li>
                 <li><a href="${root}pages/editorial.html">Editorial</a></li>
                 <li><a href="${root}pages/profile.html">Profile: Liang Ma</a></li>
                 <li><a href="${root}pages/correspondence.html">Correspondence</a></li>
@@ -156,6 +157,38 @@
     return window.APEC_BLESSINGS.filter((b) => b.status !== "ready" || !b.message).length;
   }
 
+  function renderRoleTally(ready) {
+    const el = document.querySelector("[data-role-tally]");
+    if (!el) return;
+    const roles = ["博士后", "博士生", "硕士生", "本科生"];
+    const counts = {};
+    ready.forEach((b) => {
+      const r = b.role || "其他";
+      counts[r] = (counts[r] || 0) + 1;
+    });
+    el.innerHTML = roles
+      .filter((r) => counts[r])
+      .map((r) => `<span class="c-role-tally__item"><strong>${counts[r]}</strong> ${escapeHtml(r)}</span>`)
+      .join("");
+  }
+
+  function renderColophon(ready, open) {
+    const el = document.querySelector("[data-colophon]");
+    if (!el) return;
+    const roles = ["博士后", "博士生", "硕士生", "本科生"]
+      .map((r) => {
+        const n = ready.filter((b) => b.role === r).length;
+        return n ? `${n} ${r}` : null;
+      })
+      .filter(Boolean)
+      .join(" · ");
+    const late =
+      open > 0
+        ? ` ${open} open slot${open === 1 ? "" : "s"} remain for late arrivals.`
+        : " The correspondence section is now closed for new letters.";
+    el.textContent = `${ready.length} signed letters from the APEC Lab (${roles || "group members"}).${late} Science stays unfinished; gratitude need not.`;
+  }
+
   function renderBlessings() {
     const mount = document.querySelector("[data-blessings]");
     if (!mount || !window.APEC_BLESSINGS) return;
@@ -170,6 +203,9 @@
           ? `${ready.length} letters published · ${open} slots still open`
           : `${ready.length} letters published`;
     }
+
+    renderRoleTally(ready);
+    renderColophon(ready, open);
 
     const signatories = document.querySelector("[data-signatories]");
     if (signatories) {
@@ -226,7 +262,7 @@
 
     if (!mount) return;
 
-    const preferred = ["姜中文", "蒲真", "王可欣", "何思齐", "刘蓓蓓"];
+    const preferred = ["姜中文", "董晟刚", "范竣琪", "蒲真", "王可欣"];
     const featured = [];
     preferred.forEach((name) => {
       const hit = ready.find((b) => b.name === name);
