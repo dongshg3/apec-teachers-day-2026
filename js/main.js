@@ -144,11 +144,13 @@
     return order[role] || 9;
   }
 
-  /** Display order: four postdocs first, then 周子涵, then everyone else by stage. */
+  /** Fixed front matter: four postdocs, then 周子涵; rest by stage. */
+  const LETTER_FRONT = ["姜中文", "蒲真", "廖雨辰", "吴丹阳", "周子涵"];
+
   function letterRank(b) {
-    if (b.role === "博士后") return 0;
-    if (b.name === "周子涵") return 1;
-    return 10 + roleRank(b.role);
+    const pinned = LETTER_FRONT.indexOf(b.name);
+    if (pinned >= 0) return pinned;
+    return 100 + roleRank(b.role);
   }
 
   function readyBlessings() {
@@ -156,7 +158,7 @@
     return window.APEC_BLESSINGS
       .filter((b) => b.status === "ready" && b.message && b.name)
       .slice()
-      .sort((a, b) => letterRank(a) - letterRank(b) || (a.id || 0) - (b.id || 0));
+      .sort((a, b) => letterRank(a) - letterRank(b) || (a.id || 0) - (b.id || 0) || String(a.name).localeCompare(String(b.name), "zh"));
   }
 
   function pendingCount() {
