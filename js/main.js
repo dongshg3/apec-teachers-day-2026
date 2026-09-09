@@ -139,12 +139,17 @@
     `;
   }
 
+  function roleRank(role) {
+    const order = { 博士后: 1, 博士生: 2, 硕士生: 3, 本科生: 4 };
+    return order[role] || 9;
+  }
+
   function readyBlessings() {
     if (!window.APEC_BLESSINGS) return [];
     return window.APEC_BLESSINGS
       .filter((b) => b.status === "ready" && b.message && b.name)
       .slice()
-      .sort((a, b) => String(a.name).localeCompare(String(b.name), "zh"));
+      .sort((a, b) => roleRank(a.role) - roleRank(b.role) || String(a.name).localeCompare(String(b.name), "zh"));
   }
 
   function pendingCount() {
@@ -178,11 +183,6 @@
     }
 
     renderColophon(ready, open);
-
-    const signatories = document.querySelector("[data-signatories]");
-    if (signatories) {
-      signatories.innerHTML = ready.map((b) => `<li>${escapeHtml(b.name)}</li>`).join("");
-    }
 
     const readyHtml = ready
       .map((b, i) => {
@@ -232,7 +232,7 @@
 
     if (!mount) return;
 
-    const preferred = ["姜中文", "董晟刚", "范竣琪", "蒲真", "王可欣"];
+    const preferred = ["姜中文", "蒲真", "王可欣"];
     const featured = [];
     preferred.forEach((name) => {
       const hit = ready.find((b) => b.name === name);
