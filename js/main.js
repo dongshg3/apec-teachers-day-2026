@@ -54,10 +54,6 @@
             <li><a href="${root}pages/correspondence.html">Correspondence</a></li>
           </ul>
           <div class="c-topbar__tools">
-            <span class="c-search-faux" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-              Search this issue
-            </span>
             <div class="meta">10 September 2026</div>
           </div>
         </div>
