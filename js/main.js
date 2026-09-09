@@ -69,7 +69,7 @@
             </a>
             <button class="c-nav-toggle" type="button" aria-expanded="false" data-nav-toggle>Menu</button>
             <div class="c-issue-badge">
-              <strong>Volume 1 | Teachers' Day 2026</strong>
+              <strong>Volume 1 | Complete</strong>
               Tribute to Liang Ma · 马亮
             </div>
           </div>
@@ -128,7 +128,7 @@
             </div>
           </div>
           <div class="c-footer__legal">
-            © 2026 APEC Lab · SYSU. Homage design only — not affiliated with Springer Nature.
+            © 2026 APEC Lab · SYSU · Volume 1 complete. Homage design only — not affiliated with Springer Nature.
           </div>
         </div>
       </footer>
@@ -162,14 +162,16 @@
     return window.APEC_BLESSINGS.filter((b) => b.status !== "ready" || !b.message).length;
   }
 
-  function renderColophon(ready, open) {
+  function renderColophon(ready) {
     const el = document.querySelector("[data-colophon]");
-    if (!el) return;
-    const late =
-      open > 0
-        ? ` ${open} open slot${open === 1 ? "" : "s"} remain for late arrivals.`
-        : " The correspondence section is now closed for new letters.";
-    el.textContent = `${ready.length} signed letters from the APEC Lab.${late} Science stays unfinished; gratitude need not.`;
+    if (el) {
+      el.textContent =
+        `${ready.length} signed letters from the APEC Lab. Correspondence for this Teachers' Day special is now closed. Science stays unfinished; gratitude need not.`;
+    }
+    const names = document.querySelector("[data-colophon-names]");
+    if (names) {
+      names.textContent = ready.map((b) => b.name).join(" · ");
+    }
   }
 
   function renderBlessings() {
@@ -184,15 +186,15 @@
       summary.textContent =
         open > 0
           ? `${ready.length} letters published · ${open} slots still open`
-          : `${ready.length} letters published`;
+          : `${ready.length} letters published · correspondence closed`;
     }
 
-    renderColophon(ready, open);
+    renderColophon(ready);
 
-    const readyHtml = ready
+    mount.innerHTML = ready
       .map((b, i) => {
         return `
-          <article class="c-correspondence reveal" style="transition-delay:${Math.min(i * 0.04, 0.4)}s">
+          <article class="c-correspondence reveal" style="transition-delay:${Math.min(i * 0.035, 0.42)}s">
             <div class="c-correspondence__label">Letter ${String(i + 1).padStart(2, "0")}</div>
             <p class="c-correspondence__quote">${escapeHtml(b.message)}</p>
             <div class="c-correspondence__by">— ${escapeHtml(b.name)}</div>
@@ -200,31 +202,22 @@
         `;
       })
       .join("");
-
-    const openHtml =
-      open > 0
-        ? `<p class="c-letters-open meta">Further correspondence welcome — ${open} open slot${open === 1 ? "" : "s"} remain for late letters.</p>`
-        : "";
-
-    mount.innerHTML = readyHtml + openHtml;
   }
 
   function renderHomeLetters() {
     const mount = document.querySelector("[data-home-letters]");
     const ready = readyBlessings();
     const open = pendingCount();
+    const n = ready.length;
 
     document.querySelectorAll("[data-letters-count]").forEach((el) => {
-      el.textContent =
-        open > 0
-          ? `${ready.length} published · more open`
-          : `${ready.length} published`;
+      el.textContent = open > 0 ? `${n} published · more open` : `${n} published · complete`;
     });
     document.querySelectorAll("[data-letters-count-label]").forEach((el) => {
       el.textContent =
         open > 0
-          ? `Correspondence · ${ready.length} published, more open`
-          : `Correspondence · ${ready.length} published`;
+          ? `Correspondence · ${n} published, more open`
+          : `Correspondence · ${n} letters · complete`;
     });
 
     const pull = ready.find((b) => b.name === "蒲真") || ready.find((b) => b.message.length < 80) || ready[0];

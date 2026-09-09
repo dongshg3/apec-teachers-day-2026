@@ -1174,7 +1174,11 @@ p { margin: 0 0 1rem; }
 }
 .c-letters-list {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.35rem;
+}
+@media (max-width: 820px) {
+  .c-letters-list { grid-template-columns: 1fr; }
 }
 .c-letters-open {
   margin: 1.25rem 0 0;
@@ -1184,39 +1188,43 @@ p { margin: 0 0 1rem; }
 }
 
 .c-correspondence {
+  position: relative;
   border: 1px solid var(--line);
   border-left: 3px solid var(--hero);
-  padding: 1.2rem 1.35rem;
+  padding: 1.15rem 1.25rem 1.2rem;
   margin-bottom: 0;
   background: var(--paper);
-  transition: border-color 0.35s var(--ease), transform 0.35s var(--ease);
+  transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 .c-correspondence:hover {
-  border-color: var(--link);
-  transform: translateX(2px);
+  border-color: var(--line-strong);
+  box-shadow: 0 10px 28px rgba(41, 48, 60, 0.06);
 }
 .c-correspondence--pending {
   background:
     repeating-linear-gradient(-45deg, var(--paper), var(--paper) 10px, var(--paper-soft) 10px, var(--paper-soft) 20px);
 }
 .c-correspondence__label {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--nature-red);
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.5rem;
 }
 .c-correspondence__quote {
   font-family: var(--serif);
-  font-size: 1.12rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  line-height: 1.45;
-  margin: 0 0 0.85rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.95rem;
 }
 .c-correspondence__by {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--ink-secondary);
+  text-align: right;
+  font-style: italic;
 }
 .c-list--tight li { padding-block: 0.85rem; }
 
@@ -1480,13 +1488,41 @@ p { margin: 0 0 1rem; }
   margin: 0;
   color: var(--ink-secondary);
 }
+.c-colophon__names {
+  margin: 0.85rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 62ch;
+}
+
+.c-issue-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.55rem;
+}
+.c-issue-status__badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--nature-red);
+  border: 1px solid rgba(196, 6, 6, 0.35);
+  padding: 0.2rem 0.5rem;
+  background: rgba(196, 6, 6, 0.04);
+}
 
 .c-closing {
-  margin: 2.5rem 0 0;
-  padding: 2.25rem 0 2.5rem;
-  border-top: 1px solid var(--line);
+  margin: 2.75rem calc(-1 * var(--gutter)) 0;
+  padding: 2.5rem var(--gutter) 2.75rem;
+  border-top: none;
   background:
-    linear-gradient(180deg, var(--paper-soft) 0%, transparent 100%);
+    linear-gradient(165deg, var(--hero-deep) 0%, var(--hero) 55%, #243028 100%);
+  color: rgba(255,255,255,0.9);
 }
 .c-closing__inner {
   max-width: 40rem;
@@ -1496,33 +1532,47 @@ p { margin: 0 0 1rem; }
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--nature-red);
+  color: #f0a3a3;
   margin: 0 0 0.5rem;
 }
 .c-closing__title {
   font-family: var(--serif);
-  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
   font-weight: 700;
   line-height: 1.25;
   margin: 0 0 0.65rem;
-  color: var(--hero);
+  color: #fff;
 }
 .c-closing__text {
   font-size: 1.02rem;
   line-height: 1.65;
-  color: var(--ink-secondary);
+  color: rgba(255,255,255,0.78);
   margin: 0 0 0.5rem;
   max-width: 52ch;
 }
 .c-closing__meta {
   font-size: 0.85rem;
-  color: var(--ink-muted);
-  margin: 0 0 1.15rem;
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 1.25rem;
 }
 .c-closing__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+}
+
+::selection {
+  background: rgba(196, 6, 6, 0.14);
+  color: var(--ink);
+}
+
+@media print {
+  .c-publisher, .c-topbar, .c-nav-toggle, .c-footer, .c-hero__actions, .c-closing__actions {
+    display: none !important;
+  }
+  .c-hero { break-inside: avoid; }
+  .c-correspondence { break-inside: avoid; box-shadow: none; }
+  a { color: inherit; text-decoration: none; }
 }
 
 .c-table-wrap { overflow-x: auto; border: 1px solid var(--line); }
