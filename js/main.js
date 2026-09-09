@@ -139,17 +139,12 @@
     `;
   }
 
-  function roleRank(role) {
-    const order = { 博士后: 1, 博士生: 2, 硕士生: 3, 本科生: 4 };
-    return order[role] || 9;
-  }
-
   function readyBlessings() {
     if (!window.APEC_BLESSINGS) return [];
     return window.APEC_BLESSINGS
       .filter((b) => b.status === "ready" && b.message && b.name)
       .slice()
-      .sort((a, b) => roleRank(a.role) - roleRank(b.role) || String(a.name).localeCompare(String(b.name), "zh"));
+      .sort((a, b) => String(a.name).localeCompare(String(b.name), "zh"));
   }
 
   function pendingCount() {
@@ -157,36 +152,14 @@
     return window.APEC_BLESSINGS.filter((b) => b.status !== "ready" || !b.message).length;
   }
 
-  function renderRoleTally(ready) {
-    const el = document.querySelector("[data-role-tally]");
-    if (!el) return;
-    const roles = ["博士后", "博士生", "硕士生", "本科生"];
-    const counts = {};
-    ready.forEach((b) => {
-      const r = b.role || "其他";
-      counts[r] = (counts[r] || 0) + 1;
-    });
-    el.innerHTML = roles
-      .filter((r) => counts[r])
-      .map((r) => `<span class="c-role-tally__item"><strong>${counts[r]}</strong> ${escapeHtml(r)}</span>`)
-      .join("");
-  }
-
   function renderColophon(ready, open) {
     const el = document.querySelector("[data-colophon]");
     if (!el) return;
-    const roles = ["博士后", "博士生", "硕士生", "本科生"]
-      .map((r) => {
-        const n = ready.filter((b) => b.role === r).length;
-        return n ? `${n} ${r}` : null;
-      })
-      .filter(Boolean)
-      .join(" · ");
     const late =
       open > 0
         ? ` ${open} open slot${open === 1 ? "" : "s"} remain for late arrivals.`
         : " The correspondence section is now closed for new letters.";
-    el.textContent = `${ready.length} signed letters from the APEC Lab (${roles || "group members"}).${late} Science stays unfinished; gratitude need not.`;
+    el.textContent = `${ready.length} signed letters from the APEC Lab.${late} Science stays unfinished; gratitude need not.`;
   }
 
   function renderBlessings() {
@@ -204,21 +177,18 @@
           : `${ready.length} letters published`;
     }
 
-    renderRoleTally(ready);
     renderColophon(ready, open);
 
     const signatories = document.querySelector("[data-signatories]");
     if (signatories) {
-      signatories.innerHTML = ready
-        .map((b) => `<li>${escapeHtml(b.name)}${b.role ? " · " + escapeHtml(b.role) : ""}</li>`)
-        .join("");
+      signatories.innerHTML = ready.map((b) => `<li>${escapeHtml(b.name)}</li>`).join("");
     }
 
     const readyHtml = ready
       .map((b, i) => {
         return `
           <article class="c-correspondence reveal" style="transition-delay:${Math.min(i * 0.04, 0.4)}s">
-            <div class="c-correspondence__label">Letter ${String(i + 1).padStart(2, "0")} · ${escapeHtml(b.role || "APEC")}</div>
+            <div class="c-correspondence__label">Letter ${String(i + 1).padStart(2, "0")}</div>
             <p class="c-correspondence__quote">${escapeHtml(b.message)}</p>
             <div class="c-correspondence__by">— ${escapeHtml(b.name)}</div>
           </article>
@@ -257,7 +227,7 @@
     const bEl = document.querySelector("[data-pull-by]");
     if (pull && qEl && bEl) {
       qEl.textContent = pull.message;
-      bEl.textContent = `— ${pull.name}${pull.role ? " · " + pull.role : ""}`;
+      bEl.textContent = `— ${pull.name}`;
     }
 
     if (!mount) return;
@@ -278,7 +248,7 @@
           <article class="c-letter-card reveal">
             <p class="c-letter-card__mark">Letter ${String(i + 1).padStart(2, "0")}</p>
             <p class="c-letter-card__quote">${escapeHtml(b.message)}</p>
-            <p class="c-letter-card__by">— ${escapeHtml(b.name)}${b.role ? " · " + escapeHtml(b.role) : ""}</p>
+            <p class="c-letter-card__by">— ${escapeHtml(b.name)}</p>
           </article>
         `
       )

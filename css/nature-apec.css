@@ -1418,26 +1418,6 @@ p { margin: 0 0 1rem; }
 }
 @media (max-width: 640px) { .c-toc { columns: 1; } }
 
-.c-role-tally {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem 1.1rem;
-  margin: 0 0 1.1rem;
-  padding: 0.75rem 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.c-role-tally__item {
-  font-size: 0.82rem;
-  color: var(--ink-secondary);
-  letter-spacing: 0.01em;
-}
-.c-role-tally__item strong {
-  color: var(--nature-red);
-  font-variant-numeric: tabular-nums;
-  margin-right: 0.2rem;
-}
-
 .c-colophon {
   margin-top: 2.25rem;
   padding: 1.35rem 0 0.25rem;
