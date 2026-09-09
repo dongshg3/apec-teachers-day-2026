@@ -70,6 +70,13 @@ window.APEC_BLESSINGS = [
     message: "感谢老师在学业和科研上给予我们的悉心指导，还为我们提供诸多野外考察、学术交流的宝贵机会，祝您学术常青，身体健康，家庭幸福。",
     status: "ready"
   },
-  { id: 11, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
-  { id: 12, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." }
+  {
+    id: 11,
+    name: "范竣琪",
+    role: "博士生",
+    message: "祝老师教师节快乐，工作高屋建瓴，家庭其乐融融。",
+    status: "ready"
+  },
+  { id: 12, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 13, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." }
 ];
