@@ -219,8 +219,8 @@
     document.querySelectorAll("[data-letters-count]").forEach((el) => {
       el.textContent =
         open > 0
-          ? ` · ${ready.length} published, more open`
-          : ` · ${ready.length} published`;
+          ? `${ready.length} published · more open`
+          : `${ready.length} published`;
     });
     document.querySelectorAll("[data-letters-count-label]").forEach((el) => {
       el.textContent =
@@ -233,7 +233,11 @@
     const qEl = document.querySelector("[data-pull-quote]");
     const bEl = document.querySelector("[data-pull-by]");
     if (pull && qEl && bEl) {
-      qEl.textContent = pull.message;
+      let quote = pull.message;
+      if (pull.name === "蒲真") {
+        quote = "谢谢您在用心做一个好老师，让我相信“完美”导师可以存在且应该存在。";
+      }
+      qEl.textContent = quote;
       bEl.textContent = `— ${pull.name}`;
     }
 
