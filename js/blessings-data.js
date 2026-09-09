@@ -84,6 +84,13 @@ window.APEC_BLESSINGS = [
     message: "感谢马老师给我良好的学习成长环境，愿马老师学术之树常青，身体健康，节日安乐！",
     status: "ready"
   },
-  { id: 13, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
-  { id: 14, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." }
+  {
+    id: 13,
+    name: "吴丹阳",
+    role: "Group member",
+    message: "马老师，教师节快乐！一直非常敬佩您扎实的专业素养和严谨的治学态度，您是我在求学路上默默学习的榜样。感谢您的悉心指导和宝贵机会，让我在科研道路上不断成长。祝您身体健康，工作顺心，每天都有好心情！",
+    status: "ready"
+  },
+  { id: 14, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." },
+  { id: 15, name: "", role: "Group member", message: "", status: "pending", note: "Correspondence open — one sentence for 马老师." }
 ];
